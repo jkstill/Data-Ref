@@ -21,24 +21,6 @@ BEGIN {
 }
 
 
-#################### subroutine header begin ####################
-
-=head2 sample_function
-
- Usage     : How to use this function/method
- Purpose   : What it does
- Returns   : What it returns
- Argument  : What it wants to know
- Throws    : Exceptions and other anomolies
- Comment   : This is a sample subroutine header.
-           : It is polite to include more pod and fewer comments.
-
-See Also   :
-
-=cut
-
-#################### subroutine header end ####################
-
 sub _setDebugLevel {
 	($debugLevel) = @_;
 	return;
@@ -256,7 +238,7 @@ sub pdebug {
 
 =head1 new
 
- Given and arbitrary data structure, create a new object that can then be traversed by walk().
+ Given an arbitrary data structure, create a new object that can then be traversed by walk().
 
  walk() will print all values and the string used to access them
 
