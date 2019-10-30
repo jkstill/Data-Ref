@@ -7,13 +7,11 @@ use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
-
 use Data::Ref;
 
-
-my $debugLevel=1;
+my $debugLevel=0;
 # test case file
-my $tcFile = 'tc01.pl';
+my $tcFile = 'test-files/tc02.pl';
 my $help=0;
 
 GetOptions (
@@ -28,7 +26,6 @@ if ($help) {
 }
 
 
-
 my $fh = new IO::File;
 
 $fh->open($tcFile,'r') || die "cannot open $tcFile = $!\n";
@@ -36,6 +33,8 @@ $fh->open($tcFile,'r') || die "cannot open $tcFile = $!\n";
 my $slurpSave=$/;
 undef $/; # slurp mode for file read
 my $tcStr = <$fh>;
+$/ = $slurpSave;
+
 my $tc;
 eval $tcStr;
 
@@ -46,7 +45,6 @@ my $dr = Data::Ref->new (
 	}
 );
 
-#Data::Ref::walk($tc);
 $dr->walk;
 
 sub usage {

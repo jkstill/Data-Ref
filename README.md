@@ -137,3 +137,48 @@ If you are on a windows box you should use 'nmake' rather than 'make'.
 	    v = value
 	    refStr = the string used to access the value
 
+# Demo Scripts
+
+Some scripts to demonstrate usage
+
+## dro.pl
+
+Demonstrates using the object interface with an included test file.
+
+Use `./dro.pl --help` for options.
+
+```bash
+>  ./dro.pl
+i:v, 0:element 0
+refStr: VAR->{'HL01-01'}{'HL02-01'}[0]
+i:v, 1:element 1
+refStr: VAR->{'HL01-01'}{'HL02-01'}[1]
+i:v, 2:element 2
+refStr: VAR->{'HL01-01'}{'HL02-01'}[2]
+k:v, 'K4':'this is key 4'
+refStr: VAR->{'HL01-02'}{'HL02-01'}{'K4'}
+k:v, 'K5':'this is key 5'
+refStr: VAR->{'HL01-02'}{'HL02-01'}{'K5'}
+k:v, 'K6':'this is key 6'
+refStr: VAR->{'HL01-02'}{'HL02-01'}{'K6'}
+```
+
+## drp.pl
+
+Similar to `dro.pl`, but uses the procedural interface.
+
+## drj.pl
+
+Similar to `dr[op].pl`, but this file reads in a JSON file, parses it, then walks the tree.
+
+```bash
+>  ./drj.pl
+k:v, 'id':'1001'
+refStr: VAR->[0]{'batters'}{'batter'}[0]{'id'}
+k:v, 'type':'Regular'
+...
+k:v, 'type':'donut'
+refStr: VAR->[2]{'type'}
+```
+
+
