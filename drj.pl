@@ -8,7 +8,7 @@ use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
-use Data::Ref;
+use Data::Ref::JSON;
 
 eval { require JSON::Parse };
 
@@ -45,7 +45,7 @@ $/ = $slurpSave;
 
 my $json = parse_json($jsonStr);
 
-my $dr = Data::Ref->new (
+my $dr = Data::Ref::JSON->new (
 	{
 		DEBUG	=> $debugLevel,
 		DATA	=> $json

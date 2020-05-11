@@ -4,7 +4,7 @@
 
 use Test::More tests => 3;
 
-BEGIN { use_ok( 'Data::Ref' ); }
+BEGIN { use_ok( 'Data::Ref::JSON' ); }
 
 my $tcFile = 'test-files/tc02.pl';
 my $fh = new IO::File;
@@ -15,8 +15,8 @@ my $tcStr = <$fh>;
 my $tc;
 eval $tcStr;
 
-my $object = Data::Ref->new ({ DATA => $tc } );
-isa_ok ($object, 'Data::Ref');
+my $object = Data::Ref::JSON->new ({ DATA => $tc } );
+isa_ok ($object, 'Data::Ref::JSON');
 
 eval {
 	$object->walk;
