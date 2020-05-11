@@ -6,7 +6,11 @@ Walk a referenced arbitrary data structure and provide the reference to access v
 
 When working with deeply nested complex data structures, it can be quite difficult to determine just what the key is for any value.
 
-Data::Ref will traverse the data, printing the values and the keys used to access them.
+A Data::Ref module will traverse the data, printing the values and the keys used to access them.
+
+Currently the only module available is for JASON
+
+  Data::Ref::JSON
 
 # Manual Installation
 
@@ -32,7 +36,7 @@ If you are on a windows box you should use 'nmake' rather than 'make'.
      This can be used as an object or a procedure
 
 ### As Procedure
-     use Data::Ref qw(walk);
+     use Data::Ref::JSON qw(walk);
 
      my %tc = (
 
@@ -57,7 +61,7 @@ If you are on a windows box you should use 'nmake' rather than 'make'.
      walk(\%tc);
 
 ### As Object
-     use Data::Ref;
+     use Data::Ref::JSON;
 
      my %tc = (
 
@@ -79,7 +83,7 @@ If you are on a windows box you should use 'nmake' rather than 'make'.
 
       );
 
-     my $dr = Data::Ref->new (
+     my $dr = Data::Ref::JSON->new (
        {
 	  DEBUG   => 0,
 	  DATA	  => \%tc
