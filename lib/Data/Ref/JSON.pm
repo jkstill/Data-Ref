@@ -20,6 +20,10 @@ BEGIN {
     %EXPORT_TAGS = ();
 }
 
+my %walkType = (
+	'HASH' => \&_walkHash,
+	'ARRAY' => \&_walkArray,
+);
 
 sub _setDebugLevel {
 	($debugLevel) = @_;
@@ -130,19 +134,14 @@ sub _walk {
 		warn "BLOCK HAS EXECUTED\n";
 	}
 
-
 	if ( $refType eq 'REF' ) {
 		carp "Do not know how to handle type of 'REF'.\n";
 		carp "Perhaps you have unncessarily referenced a variable with \?\n";
 		croak "unsupported reference\n";
-	} elsif ( $refType eq 'HASH' ) {
-		_walkHash($structRef,$refStr);
-	} elsif ( $refType eq 'ARRAY' ) {
-		#print 'please call _walkArray($structRef,$refStr)',"\n";
-		#pdebug(1,"$subroutine: dump array:\n" , Dumper($structRef), "\n");
-		_walkArray($structRef,$refStr);
 	} elsif ($refType eq '' ) { # check for scalar - leaf node
 		croak "Something went wrong - refType is '$refType'\n";
+	} else {
+		$walkType{$refType}($structRef,$refStr);
 	}
 }
 
@@ -288,6 +287,11 @@ sub pdebug {
 
 =cut
 
+#my %walkers = (
+#'HASH' => 0,
+#'ARRAY' => 1,
+#);
+
 sub new
 {
 
@@ -308,6 +312,10 @@ sub new
 
 
 	pdebug(1,"$subroutine - new self: ", Dumper($self));
+
+	# may convert to this later
+	#$self->{walkers}[$walkType{'HASH'}] = sub { $self->_walkHash(); };
+	#$self->{walkers}[$walkType{'ARRAY'}] = sub { $self->_walkArray(); };
 
 	return $retval;
 }
