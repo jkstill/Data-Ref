@@ -7,7 +7,7 @@ use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
-use Data::Ref qw(walk);
+use Data::Ref::JSON qw(walk);
 
 my $debugLevel=0;
 # test case file
@@ -26,7 +26,7 @@ if ($help) {
 }
 
 
-Data::Ref::setDebugLevel($debugLevel);
+Data::Ref::JSON::setDebugLevel($debugLevel);
 
 my $fh = new IO::File;
 
@@ -39,7 +39,7 @@ $/ = $slurpSave;
 
 my $tc;
 eval $tcStr;
-Data::Ref::pdebug(1,'Test Data tc: ' , Dumper($tc));
+Data::Ref::JSON::pdebug(1,'Test Data tc: ' , Dumper($tc));
 
 walk($tc);
 

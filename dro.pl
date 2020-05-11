@@ -7,7 +7,7 @@ use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
-use Data::Ref;
+use Data::Ref::JSON;
 
 my $debugLevel=0;
 # test case file
@@ -38,7 +38,7 @@ $/ = $slurpSave;
 my $tc;
 eval $tcStr;
 
-my $dr = Data::Ref->new (
+my $dr = Data::Ref::JSON->new (
 	{
 		DEBUG	=> $debugLevel,
 		DATA	=> $tc

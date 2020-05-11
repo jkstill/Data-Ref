@@ -4,7 +4,7 @@
 
 use Test::More tests => 3;
 
-BEGIN { use_ok( 'Data::Ref' ); }
+BEGIN { use_ok( 'Data::Ref::JSON' ); }
 
 my %tc = (
    'HL01-01' => {
@@ -25,8 +25,8 @@ my %tc = (
 
 );
 
-my $object = Data::Ref->new ({ DATA => \%tc } );
-isa_ok ($object, 'Data::Ref');
+my $object = Data::Ref::JSON->new ({ DATA => \%tc } );
+isa_ok ($object, 'Data::Ref::JSON');
 
 eval {
 	$object->walk;

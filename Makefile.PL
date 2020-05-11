@@ -6,8 +6,8 @@ use warnings;
 # the contents of the Makefile that is written.
 
 my %WriteMakefileArgs = (
-    NAME                => 'Data::Ref',
-    VERSION_FROM        => 'lib/Data/Ref.pm',
+    NAME                => 'Data::Ref::JSON',
+    VERSION_FROM        => 'lib/Data/Ref/JSON.pm',
     AUTHOR              => 'Jared Still (jkstill@gmail.com)',
     ABSTRACT            => 'Walk a referenced arbitrary data structure and provide the reference to access values',
     INSTALLDIRS         => ($] < 5.011 ? 'perl' : 'site'),

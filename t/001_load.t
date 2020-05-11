@@ -4,9 +4,9 @@
 
 use Test::More tests => 2;
 
-BEGIN { use_ok( 'Data::Ref' ); }
+BEGIN { use_ok( 'Data::Ref::JSON' ); }
 
-my $object = Data::Ref->new ({ DATA => {} } );
-isa_ok ($object, 'Data::Ref');
+my $object = Data::Ref::JSON->new ({ DATA => {} } );
+isa_ok ($object, 'Data::Ref::JSON');
 
 

@@ -1,5 +1,5 @@
 
-package Data::Ref;
+package Data::Ref::JSON;
 use strict;
 use Carp;
 use warnings;
@@ -156,7 +156,7 @@ sub _walk {
 
 =head2 As Procedure
 
- use Data::Ref qw(walk);
+ use Data::Ref::JSON qw(walk);
 
  my %tc = (
 
@@ -185,7 +185,7 @@ sub _walk {
 
 =head2 As Object
 
- use Data::Ref;
+ use Data::Ref::JSON;
 
  my %tc = (
 
@@ -207,7 +207,7 @@ sub _walk {
 
   );
 
- my $dr = Data::Ref->new (
+ my $dr = Data::Ref::JSON->new (
    {
       DEBUG   => 0,
       DATA    => \%tc
@@ -221,7 +221,7 @@ sub _walk {
 
 sub walk {
 
-	if ( ref($_[0]) eq 'Data::Ref' ) {
+	if ( ref($_[0]) eq 'Data::Ref::JSON' ) {
 		my $self = shift;
 		_walk($self->{DATA});
 	} else {
@@ -315,7 +315,7 @@ sub new
 
 =head1 NAME
 
- Data::Ref 
+ Data::Ref::JSON 
 
 =head1 SYNOPSIS
 
@@ -328,7 +328,7 @@ sub new
 
  When working with deeply nested complex data structures, it can be quite difficult to determine just what the key is for any value.
 
- Data::Ref will traverse the data, printing the values and the keys used to access them.
+ Data::Ref::JSON will traverse the data, printing the values and the keys used to access them.
  
 
 =head1 USAGE
