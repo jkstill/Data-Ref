@@ -8,7 +8,7 @@ When working with deeply nested complex data structures, it can be quite difficu
 
 A Data::Ref module will traverse the data, printing the values and the keys used to access them.
 
-Currently the only module available is for JASON
+Currently the only module available is for JSON
 
   Data::Ref::JSON
 
@@ -148,6 +148,8 @@ Some scripts to demonstrate usage
 ## dro.pl
 
 Demonstrates using the object interface with an included test file.
+
+This script reads in a Perl file that contains a Perl hash variable, and walks the structure
 
 Use `./dro.pl --help` for options.
 

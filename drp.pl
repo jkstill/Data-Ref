@@ -2,11 +2,22 @@
 
 # using procedural interface
 
+=head1 drp.pl
+
+ This script evals a file that is a perl script containing only a Perl Hash
+
+ The script then prints the values and path to the values.
+
+ This will not work when passed JSON data, using the Procedural interface.
+
+=cut
+
 use strict;
 use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
+#use lib './lib'; # development use only
 use Data::Ref::JSON qw(walk);
 
 my $debugLevel=0;
@@ -37,6 +48,8 @@ undef $/; # slurp mode for file read
 my $tcStr = <$fh>;
 $/ = $slurpSave;
 
+# read a perl script, and getting the JSON from it
+# the hash is $tc in the script
 my $tc;
 eval $tcStr;
 Data::Ref::JSON::pdebug(1,'Test Data tc: ' , Dumper($tc));

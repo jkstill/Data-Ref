@@ -3,11 +3,21 @@
 # using object interface
 # read JSON, create Perl Data Structure and print references
 
+=head1 drp.pl
+
+ This script reads in JSON from a file.
+
+ The script then prints the values and path to the values.
+
+=cut
+
+
 use strict;
 use warnings;
 use Data::Dumper;
 use IO::File;
 use Getopt::Long;
+#use lib './lib'; # development use only
 use Data::Ref::JSON;
 
 eval { require JSON::Parse };

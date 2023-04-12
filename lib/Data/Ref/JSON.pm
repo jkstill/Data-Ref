@@ -91,7 +91,9 @@ sub _walkHash {
 
 		pdebug(1,"key refType: $keyRefType\n");
 		if ( $keyRefType eq 'SCALAR' ) {
-			print "k:v, '$key':'$hr->{$key}'\n";
+			#print "k:v, '$key':'" . defined($hr->{$key}) ? $hr->{$key} : 'NULL' . "'\n";
+			my $value = defined($hr->{$key}) ? $hr->{$key} : 'NULL';
+			print "k:v, '$key':'$value'\n";
 			print "refStr: $refStr" . q({'). $key . q('}) . "\n";
 		} elsif ($keyRefType eq 'ARRAY') {
 			pdebug(1, "$subroutine nested array: ", Dumper($hr->{$key}),"\n");
